@@ -14,13 +14,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Bears regression model
 
-### make a simple regression model
+### make a simple regression model-read in the data
 
 ```{r}
 bears <- read.csv(file="BEARS.csv",header = TRUE)
 ```
 
-## Model LENGTH ~ NECK  this is an example  
+# NECK
+## Model LENGTH ~ NECK  
 
 ```{r}
 simp <- lm(LENGTH~NECK,data=bears)
@@ -29,13 +30,60 @@ abline(simp)
 summary.lm(simp)
 ```
 
+```{r}
+new <- data.frame(NECK=c(16,28,31))
+predict(simp,new,se.fit=TRUE)
+```
+
+
+# HEADWTH
+## Model LEGTH ~ HEADWTH
+
+```{r}
+simpHW <-lm(LENGTH~HEADWTH,data=bears)
+plot(LENGTH~HEADWTH,data=bears)
+abline(simpHW)
+summary.lm(simpHW)
+```
+
+```{r}
+new <- data.frame(HEADWTH=c(5.5,9,8))
+predict(simpHW,new,se.fit=TRUE)
+```
+
+# HEADLEN
+## Model LEGTH ~ HEADLEN
+
+```{r}
+simpHL <- lm(LENGTH~HEADLEN,data=bears)
+plot(LENGTH~HEADLEN,data=bears)
+abline(simpHL)
+summary.lm(simpHL)
+```
+
+```{r}
+new <- data.frame(HEADLEN=bears$HEADLEN [c(16,28,31)])
+predict(simpHL,new,se.fit=TRUE)
+```
+
+# WEIGHT
+
+```{r}
+simpW <- lm(LENGTH~WEIGHT,data=bears)
+plot(LENGTH~WEIGHT,data=bears)
+abline(simpW)
+summary.lm(simpW)
+```
+
 ## now predict the length of a bear who has a neck of 17, 22 and 26
 
 
 ```{r}
-newData <- data.frame(NECK=c(17,22,26))
-predict(simp,newData)
-predict(simp,newData,se.fit=TRUE)
+newData <- data.frame(HEADLEN=c(17,13,9))
+predict(simpHL,newData,se.fit=TRUE)
 ```
+
+
 ## Surely there is another variable that can better predict LENGTH than NECK. Find one and compare its performance to that of neck by it value of Adjusted-Rsquared (bigger is better).
+
 
