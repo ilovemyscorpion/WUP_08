@@ -96,7 +96,7 @@ new <- data.frame(CHEST=bears$CHEST [c(5,15,23)])
 predict(simpC,new,se.fit=TRUE)
 ```
 
-## now predict the length of a bear who has a neck of 17, 22 and 26
+## Now predict the length of a bear who has a neck of 17, 22 and 26
 
 
 ```{r}
@@ -114,7 +114,7 @@ predict(simpC,new,se.fit=TRUE)
 The best model was based on HEADLEN; demonstrated by the adjusted R-square. The bears length has been predicted as 5, 15, and 23 which is 70.13, 51.94, 58.83.
 
 The actual lenght of bears is:
-`r bears$LENGTH[c(5,15,23)]`
+`r bears$LENGTH[c(5,15,23)]`.
 
 For the prediction of bear number 5, there was error of about 5 inches. Bear number 15 prediction is right on the spot and fro bear number 23 prediction an error of just under 6 inches.
 
